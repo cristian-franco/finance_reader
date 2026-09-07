@@ -55,7 +55,9 @@ class WellsFargoCsvReader(BankCsvReader):
         self,
         path_str: str
     ):
-        return super().read_csv(f"inputs/wells_fargo_cc/{path_str}")
+        return super().read_csv(
+            f"files/inputs/wells_fargo_cc/{path_str}"
+        )
 
     def format_df(self):
         print("WellsFargo")
@@ -66,7 +68,7 @@ class WellsFargoCsvReader(BankCsvReader):
 
         today = date.today()
         self.csv_df.to_csv(
-            f"outputs/wells_fargo_cc/{today}.csv"
+            f"files/outputs/wells_fargo_cc/{today}.csv"
         )
         return
 
