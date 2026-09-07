@@ -17,3 +17,6 @@ wheels/
 
 # original csv files
 /wf_cc_csvs/*
+
+# personal information folders
+files/*
