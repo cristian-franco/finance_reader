@@ -49,8 +49,8 @@ def main():
     # but can have child classes that each implement
     # read_csv function differently, or along those lines
     wf_bank_csv_reader = bank_csv_reader.WellsFargoCsvReader()
-    co_bank_csv_reader = bank_csv_reader.CapitalOneCsvReader()
-    apple_bank_csv_reader = bank_csv_reader.AppleCsvReader()
+    # co_bank_csv_reader = bank_csv_reader.CapitalOneCsvReader()
+    # apple_bank_csv_reader = bank_csv_reader.AppleCsvReader()
 
     # TODO - read .env for what csv types we will need
 
@@ -65,13 +65,20 @@ def main():
     # 3. Can make a sqlite table to store transactions in, makes it easier
     # to move to home server and a service
     wf_bank_csv_reader.read_csv('CreditCard.csv')
+    wf_bank_csv_reader.format_df()
     wf_bank_csv_reader.regex_tag_groceries()
+    wf_bank_csv_reader.filter_to_shared_groceries()
     wf_bank_csv_reader.save()
 
     # TODO - find a good way to have the script automatically
     # determine what month its for
     # e.g. running it several times through the month
     # will overwrite the same output file
+    #
+    # TODO - drop index on output csv
+    # TODO - make function to create groceries csv only
+    # TODO - drop records for payments
+    #
 
 if __name__ == "__main__":
     main()
