@@ -65,7 +65,9 @@ def main():
     # 3. Can make a sqlite table to store transactions in, makes it easier
     # to move to home server and a service
     wf_bank_csv_reader.read_csv('CreditCard.csv')
+    wf_bank_csv_reader.format_df()
     wf_bank_csv_reader.regex_tag_groceries()
+    wf_bank_csv_reader.filter_to_shared_groceries()
     wf_bank_csv_reader.save()
 
     # TODO - find a good way to have the script automatically
