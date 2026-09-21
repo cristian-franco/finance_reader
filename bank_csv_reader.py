@@ -112,8 +112,16 @@ class WellsFargoCsvReader(BankCsvReader):
             return
 
         today = date.today()
+
+        first_value = self.csv_df.iloc[0]["date"].date()
+
+        month_str = first_value.strftime("%B")
+        month_int = first_value.strftime("%m")
+        year_int = first_value.year
+
+
         self.csv_df.to_csv(
-            f"files/outputs/wells_fargo_cc/{today}.csv",
+            f"files/outputs/wells_fargo_cc/{year_int}_{month_int}_{month_str}_generated_{today}.csv",
             index=False
         )
         return
